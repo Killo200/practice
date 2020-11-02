@@ -47,7 +47,7 @@ COMMENT ON TABLE Person IS 'Тип документа';
 CREATE TABLE IF NOT EXISTS Document (
     id                  INTEGER                     COMMENT 'Уникальный идентификатор'  PRIMARY KEY  AUTO_INCREMENT,
     version             INTEGER DEFAULT 0  NOT NULL COMMENT 'Служебное поле hibernate',
-    document_number     INTEGER            NOT NULL COMMENT 'Номер документа',
+    document_number     VARCHAR(11)        NOT NULL COMMENT 'Номер документа',
 	document_date       DATE                        COMMENT 'Дата выдачи',
     person_id           INTEGER            NOT NULL COMMENT 'Уникальный идентификатор пользователя',
     doc_type_code_id    INTEGER            NOT NULL COMMENT 'Идентификатор типа документа'
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS Country (
     id                  INTEGER                     COMMENT 'Уникальный идентификатор'  PRIMARY KEY  AUTO_INCREMENT,
     version             INTEGER DEFAULT 0  NOT NULL COMMENT 'Служебное поле hibernate',
     code_country        INTEGER            NOT NULL COMMENT 'Уникальный код страны',
-	name                VARCHAR(250)       NOT NULL COMMENT 'страна'
+	name                VARCHAR(250)       NOT NULL COMMENT 'Cтрана'
 );
 COMMENT ON TABLE Person IS 'Страна';
 
