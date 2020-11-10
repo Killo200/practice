@@ -1,6 +1,9 @@
 package ru.bellintegrator.practice.model;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +19,8 @@ import javax.persistence.Version;
 /**
  * Человек
  * */
+@Getter
+@Setter
 @Entity(name = "Person")
 public class Person {
 
