@@ -2,6 +2,8 @@ package ru.bellintegrator.practice.dao.organization;
 
 import ru.bellintegrator.practice.model.Organization;
 import ru.bellintegrator.practice.model.Person;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewIn;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewOut;
 
 import java.util.List;
 
@@ -20,10 +22,10 @@ public interface OrganizationDao {
     /**
      * Получить объекты Organization по фильтру
      *
-     * @param (name, inn, isActive)
+     * @param organizationFilterViewIn
      * @return
      */
-    List<Organization> allByFilter(String name, String inn, boolean isActive);
+    List<Organization> allByFilter(OrganizationFilterViewIn organizationFilterViewIn);
 
     /**
      * Получить Organization по идентификатору

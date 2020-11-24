@@ -9,14 +9,14 @@ INSERT INTO Country (code_country, name)
 VALUES (276, 'Германия');
 */
 
-INSERT INTO Organization (id, version, name, full_name, inn, kpp, address, phone)
-VALUES (1, 0, 'Газпром', 'ПАО Газпром', '7736050003', '997250001', 'ул. Наметкина, 16', '84957193001');
+INSERT INTO Organization (id, version, name, full_name, inn, kpp, address, phone, is_active)
+VALUES (1, 0, 'Газпром', 'ПАО Газпром', '7736050003', '997250001', 'ул. Наметкина, 16', '84957193001', true);
 
-INSERT INTO Organization (id, version, name, full_name, inn, kpp, address, phone)
-VALUES (2, 0, 'Тинькофф', 'TCS Group Holding PLC Annual', '156844852', '4025685548', '1-й Волоколамский проезд, д. 10, стр. 1', '84956455909');
+INSERT INTO Organization (id, version, name, full_name, inn, kpp, address, phone, is_active)
+VALUES (2, 0, 'Тинькофф', 'TCS Group Holding PLC Annual', '156844852', '4025685548', '1-й Волоколамский проезд, д. 10, стр. 1', '84956455909', true);
 
-INSERT INTO Organization (id, version, name, full_name, inn, kpp, address, phone)
-VALUES (3, 0, 'Яндекс', 'ООО "Яндекс"', '7736207543', '770401001', 'ул. Льва Толстого, 16', '84957397000');
+INSERT INTO Organization (id, version, name, full_name, inn, kpp, address, phone, is_active)
+VALUES (3, 0, 'Яндекс', 'ООО "Яндекс"', '7736207543', '770401001', 'ул. Льва Толстого, 16', '84957397000', true);
 /*
 
 INSERT INTO Office (name, address, phone, organization_id)

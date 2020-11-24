@@ -2,12 +2,15 @@ package ru.bellintegrator.practice.controller.organization;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.bellintegrator.practice.model.Organization;
 import ru.bellintegrator.practice.service.organization.OrganizationService;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewIn;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewOut;
+import ru.bellintegrator.practice.view.organization.OrganizationView;
 
 import java.util.List;
 
@@ -29,6 +32,21 @@ public class OrganizationController {
     @GetMapping("/organizations")
     public List<Organization> all() {
         return organizationService.all();
+    }
+
+    @ApiOperation(value = "Получить список организаций по фильтру", httpMethod = "POST")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = String.class),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Failure")})
+    @PostMapping("/list")
+    public List<OrganizationFilterViewOut> getOrganizations(@RequestBody OrganizationFilterViewIn organizationFilterViewIn) {
+        return organizationService.allByFilter(organizationFilterViewIn);
+    }
+
+    @GetMapping("/{id}")
+    public OrganizationView loadById(Long id) {
+        return null;
     }
 
 }

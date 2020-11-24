@@ -2,6 +2,8 @@ package ru.bellintegrator.practice.service.organization;
 
 import org.springframework.validation.annotation.Validated;
 import ru.bellintegrator.practice.model.Organization;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewIn;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewOut;
 
 import java.util.List;
 
@@ -21,10 +23,10 @@ public interface OrganizationService {
     /**
      * Получить объекты Organization по фильтру
      *
-     * @param (name, inn, isActive)
+     * @param organizationFilterViewIn
      * @return
      */
-    List<Organization> allByFilter(String name, String inn, boolean isActive);
+    List<OrganizationFilterViewOut> allByFilter(OrganizationFilterViewIn organizationFilterViewIn);
 
     /**
      * Получить Organization по идентификатору

@@ -3,6 +3,7 @@ package ru.bellintegrator.practice.dao.organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.bellintegrator.practice.model.Organization;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewIn;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -39,7 +40,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
      * {@inheritDoc}
      */
     @Override
-    public List<Organization> allByFilter(String name, String inn, boolean isActive) {
+    public List<Organization> allByFilter(OrganizationFilterViewIn orgFilter) {
 
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Organization> criteriaQuery = criteriaBuilder.createQuery(Organization.class);
@@ -47,14 +48,14 @@ public class OrganizationDaoImpl implements OrganizationDao {
         Root<Organization> organization = criteriaQuery.from(Organization.class);
         List<Predicate> predicates = new ArrayList<>();
 
-        predicates.add(criteriaBuilder.equal(organization.get("name"), name));
+        predicates.add(criteriaBuilder.equal(organization.get("name"), orgFilter.name));
 
-        if (inn != null) {
-            predicates.add(criteriaBuilder.equal(organization.get("inn"), inn));
+        if (orgFilter.inn != null) {
+            predicates.add(criteriaBuilder.equal(organization.get("inn"), orgFilter.inn));
         }
 
-        if (isActive) {
-            predicates.add(criteriaBuilder.equal(organization.get("isActive"), isActive));
+        if (orgFilter.isActive) {
+            predicates.add(criteriaBuilder.equal(organization.get("isActive"), orgFilter.isActive));
         }
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));
         return em.createQuery(criteriaQuery).getResultList();
