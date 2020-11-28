@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.bellintegrator.practice.dao.organization.OrganizationDao;
 import ru.bellintegrator.practice.model.Organization;
 import ru.bellintegrator.practice.model.mapper.MapperFacade;
-import ru.bellintegrator.practice.view.organization.OrganizationFilterViewIn;
-import ru.bellintegrator.practice.view.organization.OrganizationFilterViewOut;
+import ru.bellintegrator.practice.utils.BadDataException;
+import ru.bellintegrator.practice.view.organization.*;
 
 import java.util.List;
 
@@ -44,26 +44,41 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Transactional
     public List<OrganizationFilterViewOut> allByFilter(OrganizationFilterViewIn organizationFilterViewIn) {
         List<Organization> organizations = organizationDao.allByFilter(organizationFilterViewIn);
+        if (organizations.size() == 0) {
+            throw new BadDataException();
+        }
         return mapperFacade.mapAsList(organizations, OrganizationFilterViewOut.class);
     }
 
+    @ApiOperation(value = "Получить организации по ID", httpMethod = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = String.class),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Failure")})
     @Override
     @Transactional
-    public Organization loadById(Long id) {
+    public OrganizationView loadById(Long id) {
         Organization organization = organizationDao.loadById(id);
-        //return mapperFacade.map(organization, OrganizationView.class);
-        return null;
-    }
-
-    @Override
-    @Transactional
-    public void save(Organization organization) {
+        if(organization == null) {
+            throw new BadDataException();
+        }
+        return mapperFacade.map(organization, OrganizationView.class);
 
     }
 
     @Override
     @Transactional
-    public void update(Organization organization) {
+    public void save(OrganizationViewSave organizationViewSave) {
+        Organization organization = new Organization();
+        mapperFacade.map(organizationViewSave, organization);
+        organizationDao.save(organization);
+    }
 
+    @Override
+    @Transactional
+    public void update(OrganizationViewUpdate organizationViewUpdate) {
+        Organization organization = organizationDao.loadById(organizationViewUpdate.id);
+        mapperFacade.map(organizationViewUpdate, organization);
+        organizationDao.update(organization);
     }
 }

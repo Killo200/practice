@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @ApiModel(description = "Список организаций по фильтру")
@@ -18,6 +19,7 @@ public class OrganizationFilterViewOut {
     @ApiModelProperty(value = "Название организации", example = "Газпром")
     public String name;
 
+    @NotNull
     @ApiModelProperty(value = "Активность организации", example = "true")
     public boolean isActive;
 

@@ -2,8 +2,7 @@ package ru.bellintegrator.practice.service.organization;
 
 import org.springframework.validation.annotation.Validated;
 import ru.bellintegrator.practice.model.Organization;
-import ru.bellintegrator.practice.view.organization.OrganizationFilterViewIn;
-import ru.bellintegrator.practice.view.organization.OrganizationFilterViewOut;
+import ru.bellintegrator.practice.view.organization.*;
 
 import java.util.List;
 
@@ -34,19 +33,19 @@ public interface OrganizationService {
      * @param id
      * @return
      */
-    Organization loadById(Long id);
+    OrganizationView loadById(Long id);
 
     /**
      * Сохранить Organization
      *
-     * @param organization
+     * @param organizationViewSave
      */
-    void save(Organization organization);
+    void save(OrganizationViewSave organizationViewSave);
 
     /**
      * Изменить Organization
      *
-     * @param organization
+     * @param organizationViewUpdate
      */
-    void update(Organization organization);
+    void update(OrganizationViewUpdate organizationViewUpdate);
 }
