@@ -1,7 +1,6 @@
 package ru.bellintegrator.practice.utils;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -11,21 +10,27 @@ import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Обработчик исключений
+ */
 @RestControllerAdvice("ru.bellintegrator.practice.controller")
 public class AppExceptionHandler {
+
     @ExceptionHandler(Exception.class)
-    public ErrorView unhandledException (Exception e) {
+    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorView otherException (Exception e) {
         ErrorView errorView = new ErrorView();
         errorView.error = e.getMessage();
         return errorView;
     }
 
     /**
-     * Метод перехватывает возникающие NullPointerException
+     * Метод перехватывает пустые данные
      */
     @ExceptionHandler(BadDataException.class)
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
-    public ErrorView handleException (BadDataException e) {
+    public ErrorView badDataException (BadDataException e) {
         ErrorView errorView = new ErrorView();
         errorView.error = "Данные не найдены";
         return errorView;
@@ -36,7 +41,7 @@ public class AppExceptionHandler {
      */
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorView handleException (ConstraintViolationException e) {
+    public ErrorView constrainViolationException (ConstraintViolationException e) {
         List<String> errors = new ArrayList<>();
         for (ConstraintViolation<?> violation : e.getConstraintViolations()) {
             String message = violation.getMessage();
@@ -44,7 +49,7 @@ public class AppExceptionHandler {
         }
 
         ErrorView errorView = new ErrorView();
-        errorView.error = StringUtils.arrayToDelimitedString(errors.toArray(),", ");
+        errorView.error = errors;
         return errorView;
     }
 }

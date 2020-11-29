@@ -1,8 +1,5 @@
 package ru.bellintegrator.practice.service.organization;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,10 +7,17 @@ import ru.bellintegrator.practice.dao.organization.OrganizationDao;
 import ru.bellintegrator.practice.model.Organization;
 import ru.bellintegrator.practice.model.mapper.MapperFacade;
 import ru.bellintegrator.practice.utils.BadDataException;
-import ru.bellintegrator.practice.view.organization.*;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewIn;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewOut;
+import ru.bellintegrator.practice.view.organization.OrganizationView;
+import ru.bellintegrator.practice.view.organization.OrganizationViewSave;
+import ru.bellintegrator.practice.view.organization.OrganizationViewUpdate;
 
 import java.util.List;
 
+/**
+ * {@inheritDoc}
+ */
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
 
@@ -26,39 +30,26 @@ public class OrganizationServiceImpl implements OrganizationService {
         this.mapperFacade = mapperFacade;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
-    public List<Organization> all() {
-        List<Organization> all =organizationDao.all();
-        return organizationDao.all(); // это из примера, Исправить!!!
-        // надо вернуть через маперфасад!
-        //return mapperFacade.mapAsList(all, OrganizationView.class);
-    }
-
-    @ApiOperation(value = "Получить организации по фильтру ", httpMethod = "POST")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success", response = String.class),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 500, message = "Failure")})
-    @Override
-    @Transactional
-    public List<OrganizationFilterViewOut> allByFilter(OrganizationFilterViewIn organizationFilterViewIn) {
-        List<Organization> organizations = organizationDao.allByFilter(organizationFilterViewIn);
+    public List<OrganizationFilterViewOut> getOrganizationsByFilter(OrganizationFilterViewIn organizationFilterViewIn) {
+        List<Organization> organizations = organizationDao.getOrganizationsByFilter(organizationFilterViewIn);
         if (organizations.size() == 0) {
             throw new BadDataException();
         }
         return mapperFacade.mapAsList(organizations, OrganizationFilterViewOut.class);
     }
 
-    @ApiOperation(value = "Получить организации по ID", httpMethod = "GET")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success", response = String.class),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 500, message = "Failure")})
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
-    public OrganizationView loadById(Long id) {
-        Organization organization = organizationDao.loadById(id);
+    public OrganizationView getOrganizationById(Long id) {
+        Organization organization = organizationDao.getOrganizationById(id);
         if(organization == null) {
             throw new BadDataException();
         }
@@ -66,19 +57,25 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
-    public void save(OrganizationViewSave organizationViewSave) {
+    public void saveOrganization(OrganizationViewSave organizationViewSave) {
         Organization organization = new Organization();
         mapperFacade.map(organizationViewSave, organization);
-        organizationDao.save(organization);
+        organizationDao.saveOrganization(organization);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
-    public void update(OrganizationViewUpdate organizationViewUpdate) {
-        Organization organization = organizationDao.loadById(organizationViewUpdate.id);
+    public void updateOrganization(OrganizationViewUpdate organizationViewUpdate) {
+        Organization organization = organizationDao.getOrganizationById(organizationViewUpdate.id);
         mapperFacade.map(organizationViewUpdate, organization);
-        organizationDao.update(organization);
+        organizationDao.updateOrganization(organization);
     }
 }

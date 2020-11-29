@@ -1,15 +1,11 @@
 package ru.bellintegrator.practice.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
-
 
 /**
  * Организация
@@ -47,13 +43,13 @@ public class Organization {
      * ИНН
      */
     @Column(name = "inn", nullable = false, length = 15)
-    private String inn; //возможно надо написать как ФИНАЛ
+    private String inn;
 
     /**
      * КПП
      */
     @Column(name = "kpp", nullable = false, length = 15)
-    private String kpp; //возможно надо написать как ФИНАЛ
+    private String kpp;
 
     /**
      * Адрес организации
@@ -73,7 +69,7 @@ public class Organization {
     @Column(name = "is_active")
     private boolean isActive;
 
-    public Organization(){}
+    public Organization() {}
 
     public Organization(String name, String fullName, String inn, String kpp, String address, String phone, boolean isActive) {
         this.name = name;

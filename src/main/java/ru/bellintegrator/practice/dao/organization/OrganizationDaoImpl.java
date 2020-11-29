@@ -31,16 +31,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
      * {@inheritDoc}
      */
     @Override
-    public List<Organization> all() {
-        TypedQuery<Organization> query = em.createQuery("SELECT o FROM Organization o", Organization.class);
-        return query.getResultList();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Organization> allByFilter(OrganizationFilterViewIn orgFilter) {
+    public List<Organization> getOrganizationsByFilter(OrganizationFilterViewIn orgFilter) {
 
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Organization> criteriaQuery = criteriaBuilder.createQuery(Organization.class);
@@ -65,7 +56,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
      * {@inheritDoc}
      */
     @Override
-    public Organization loadById(Long id) {
+    public Organization getOrganizationById(Long id) {
         return em.find(Organization.class, id);
     }
 
@@ -73,7 +64,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
      * {@inheritDoc}
      */
     @Override
-    public void save(Organization organization) {
+    public void saveOrganization(Organization organization) {
         em.persist(organization);
     }
 
@@ -81,7 +72,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
      * {@inheritDoc}
      */
     @Override
-    public void update(Organization organization) {
+    public void updateOrganization(Organization organization) {
         em.merge(organization);
     }
 }

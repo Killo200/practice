@@ -1,9 +1,7 @@
 package ru.bellintegrator.practice.dao.organization;
 
 import ru.bellintegrator.practice.model.Organization;
-import ru.bellintegrator.practice.model.Person;
 import ru.bellintegrator.practice.view.organization.OrganizationFilterViewIn;
-import ru.bellintegrator.practice.view.organization.OrganizationFilterViewOut;
 
 import java.util.List;
 
@@ -13,19 +11,12 @@ import java.util.List;
 public interface OrganizationDao {
 
     /**
-     * Получить все объекты Organization
-     *
-     * @return
-     */
-    List<Organization> all();
-
-    /**
      * Получить объекты Organization по фильтру
      *
      * @param organizationFilterViewIn
      * @return
      */
-    List<Organization> allByFilter(OrganizationFilterViewIn organizationFilterViewIn);
+    List<Organization> getOrganizationsByFilter(OrganizationFilterViewIn organizationFilterViewIn);
 
     /**
      * Получить Organization по идентификатору
@@ -33,19 +24,19 @@ public interface OrganizationDao {
      * @param id
      * @return
      */
-    Organization loadById(Long id);
+    Organization getOrganizationById(Long id);
 
     /**
      * Сохранить Organization
      *
      * @param organization
      */
-    void save(Organization organization);
+    void saveOrganization(Organization organization);
 
     /**
      * Изменить Organization
      *
      * @param organization
      */
-    void update(Organization organization);
+    void updateOrganization(Organization organization);
 }

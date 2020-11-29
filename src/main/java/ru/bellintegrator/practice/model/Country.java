@@ -1,8 +1,5 @@
 package ru.bellintegrator.practice.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +11,6 @@ import javax.persistence.Version;
 /**
  * Страны
  * */
-@Getter
-@Setter
 @Entity
 public class Country {
 
@@ -44,4 +39,36 @@ public class Country {
      */
     @Column(name = "name", nullable = false, length = 250)
     private String name;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public Integer getCodeCountry() {
+        return codeCountry;
+    }
+
+    public void setCodeCountry(Integer codeCountry) {
+        this.codeCountry = codeCountry;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -1,8 +1,11 @@
 package ru.bellintegrator.practice.service.organization;
 
 import org.springframework.validation.annotation.Validated;
-import ru.bellintegrator.practice.model.Organization;
-import ru.bellintegrator.practice.view.organization.*;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewIn;
+import ru.bellintegrator.practice.view.organization.OrganizationFilterViewOut;
+import ru.bellintegrator.practice.view.organization.OrganizationView;
+import ru.bellintegrator.practice.view.organization.OrganizationViewSave;
+import ru.bellintegrator.practice.view.organization.OrganizationViewUpdate;
 
 import java.util.List;
 
@@ -13,39 +16,32 @@ import java.util.List;
 public interface OrganizationService {
 
     /**
-     * Получить все объекты Organization
-     *
-     * @return
-     */
-    List<Organization> all();
-
-    /**
-     * Получить объекты Organization по фильтру
+     * Получение списка организаций, подходящих по фильтру
      *
      * @param organizationFilterViewIn
      * @return
      */
-    List<OrganizationFilterViewOut> allByFilter(OrganizationFilterViewIn organizationFilterViewIn);
+    List<OrganizationFilterViewOut> getOrganizationsByFilter(OrganizationFilterViewIn organizationFilterViewIn);
 
     /**
-     * Получить Organization по идентификатору
+     * Получение организации по ID
      *
      * @param id
      * @return
      */
-    OrganizationView loadById(Long id);
+    OrganizationView getOrganizationById(Long id);
 
     /**
-     * Сохранить Organization
-     *
-     * @param organizationViewSave
-     */
-    void save(OrganizationViewSave organizationViewSave);
-
-    /**
-     * Изменить Organization
+     * Обновление данных организации
      *
      * @param organizationViewUpdate
      */
-    void update(OrganizationViewUpdate organizationViewUpdate);
+    void updateOrganization(OrganizationViewUpdate organizationViewUpdate);
+
+    /**
+     * Добавление новой организации
+     *
+     * @param organizationViewSave
+     */
+    void saveOrganization(OrganizationViewSave organizationViewSave);
 }

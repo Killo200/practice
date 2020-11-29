@@ -1,8 +1,5 @@
 package ru.bellintegrator.practice.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,8 +14,6 @@ import javax.persistence.Version;
 /**
  * Документ
  * */
-@Getter
-@Setter
 @Entity
 public class Document {
 
@@ -66,4 +61,52 @@ public class Document {
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     private Person person;
+
+    public Long getPerson_id() {
+        return person_id;
+    }
+
+    public void setPerson_id(Long person_id) {
+        this.person_id = person_id;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public String getDocumentNumber() {
+        return documentNumber;
+    }
+
+    public void setDocumentNumber(String documentNumber) {
+        this.documentNumber = documentNumber;
+    }
+
+    public String getDocumentDate() {
+        return documentDate;
+    }
+
+    public void setDocumentDate(String documentDate) {
+        this.documentDate = documentDate;
+    }
+
+    public DocumentType getDocumentType() {
+        return documentType;
+    }
+
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 }

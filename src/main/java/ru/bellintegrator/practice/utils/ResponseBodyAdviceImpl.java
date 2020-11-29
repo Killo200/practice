@@ -7,13 +7,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpResponse;
-import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.LinkedHashMap;
 
-@ControllerAdvice("ru.bellintegrator.practice.controller")
+/**
+ *  Настройка ответа после выполнения метода контроллера @ResponseBody
+ * */
+@RestControllerAdvice("ru.bellintegrator.practice.controller")
 public class ResponseBodyAdviceImpl implements ResponseBodyAdvice<Object> {
 
     @Override
@@ -21,6 +23,9 @@ public class ResponseBodyAdviceImpl implements ResponseBodyAdvice<Object> {
         return true;
     }
 
+    /**
+     *  Донастройка тела ответа перед отправкой
+     *  */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
 
@@ -30,13 +35,16 @@ public class ResponseBodyAdviceImpl implements ResponseBodyAdvice<Object> {
             return body;
         }
 
-        if (methodParameter.getGenericParameterType().getTypeName().equals("void") && servletResponse.getStatus() == 200) {
+        if (methodParameter.getGenericParameterType().getTypeName().equals("void")) {
             return new ResultView();
         }
 
         return new Wrapper<Object>(body);
     }
 
+    /**
+     * Класс обертка
+     * */
     @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
     @JsonSerialize
     private class Wrapper<T> {
