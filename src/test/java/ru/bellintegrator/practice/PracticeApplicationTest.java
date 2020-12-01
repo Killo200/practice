@@ -1,7 +1,13 @@
 package ru.bellintegrator.practice;
 
-import junit.framework.TestCase;
 
-public class PracticeApplicationTest extends TestCase {
+import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
+public class PracticeApplicationTest {
+
+   /* @Test
+    public void contextLoads() {
+    }*/
 }
