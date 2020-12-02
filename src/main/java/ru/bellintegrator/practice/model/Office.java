@@ -66,7 +66,7 @@ public class Office {
         fetch = FetchType.LAZY
     )
     @JoinColumn(name = "organization_id")
-    private Organization organization;
+    private Organization organizationId;
 
     public Long getId() {
         return id;
@@ -116,11 +116,11 @@ public class Office {
         isActive = active;
     }
 
-    public Organization getOrganization() {
-        return organization;
+    public Organization getOrganizationId() {
+        return organizationId;
     }
 
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
+    public void setOrganizationId(Organization organizationId) {
+        this.organizationId = organizationId;
     }
 }
