@@ -19,7 +19,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Api(value = "CountryController", description = "Управление информацией о кодах стран(гражданство)")
 @RestController
-@RequestMapping(value = "/api/docs", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/countries", produces = APPLICATION_JSON_VALUE)
 public class CountryController {
 
     private final CountryService countryService;

@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.practice.service.documenttype.DocumentTypeService;
+import ru.bellintegrator.practice.view.document.DocumentTypeView;
+
+import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 /**
  * Контроллер обработки запросов к типу документов
- * */
+ **/
+
 @Api(value = "DocumentTypeController", description = "Управление информацией о типах документов")
 @RestController
 @RequestMapping(value = "/api/docs", produces = APPLICATION_JSON_VALUE)
@@ -31,6 +35,6 @@ public class DocumentTypeController {
     @ApiOperation(value = "Получить все типы документов", httpMethod = "GET")
     @GetMapping
     public List<DocumentTypeView> getDocs () {
-        return documentTypeService.getDocs;
+        return documentTypeService.getDocs();
     }
 }
