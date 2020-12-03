@@ -2,12 +2,15 @@ package ru.bellintegrator.practice.view.office;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class OfficeViewSave {
 
-    @NotEmpty
+    /**
+     * Идентификатор организации которой принадлежит офис
+     */
+    @NotNull
     @ApiModelProperty(value = "Идентификатор организации", example = "1")
     public Long organizationId;
 

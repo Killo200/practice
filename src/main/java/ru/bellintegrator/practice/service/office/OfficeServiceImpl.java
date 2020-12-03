@@ -3,6 +3,7 @@ package ru.bellintegrator.practice.service.office;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.bellintegrator.practice.dao.office.OfficeDao;
+import ru.bellintegrator.practice.dao.organization.OrganizationDao;
 import ru.bellintegrator.practice.model.Office;
 import ru.bellintegrator.practice.model.Organization;
 import ru.bellintegrator.practice.model.mapper.MapperFacade;
@@ -21,10 +22,12 @@ public class OfficeServiceImpl implements OfficeService {
 
     private final OfficeDao officeDao;
     private final MapperFacade mapperFacade;
+    private final OrganizationDao organizationDao;
 
-    public OfficeServiceImpl(OfficeDao officeDao, MapperFacade mapperFacade) {
+    public OfficeServiceImpl(OfficeDao officeDao, MapperFacade mapperFacade, OrganizationDao organizationDao) {
         this.officeDao = officeDao;
         this.mapperFacade = mapperFacade;
+        this.organizationDao = organizationDao;
     }
 
     /**
@@ -72,6 +75,7 @@ public class OfficeServiceImpl implements OfficeService {
     public void saveOffice(OfficeViewSave officeViewSave) {
         Office office = new Office();
         mapperFacade.map(officeViewSave, office);
+        office.setOrganizationId(organizationDao.getOrganizationById(officeViewSave.organizationId));
         officeDao.saveOffice(office);
     }
 }

@@ -3,7 +3,7 @@ package ru.bellintegrator.practice.view.office;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -15,7 +15,7 @@ public class OfficeFilterViewIn {
     /**
      * Идентификатор организации которой принадлежит офис
      */
-    @NotEmpty
+    @NotNull
     @ApiModelProperty(value = "Идентификатор организации", example = "1")
     public Long organizationId;
 

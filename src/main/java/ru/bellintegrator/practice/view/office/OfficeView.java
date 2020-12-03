@@ -1,10 +1,5 @@
 package ru.bellintegrator.practice.view.office;
 
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-
 /**
  * Вид отображения данных при запросе по ID
  * */
