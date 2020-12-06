@@ -13,4 +13,9 @@ public interface DocumentTypeService {
      * Получение списка кодов стран (гражданства)
      */
     List<DocumentTypeView> getDocs ();
+
+    /**
+     * Получение гражданства по ID
+     */
+    DocumentTypeView getDocumentTypeById (Long id);
 }

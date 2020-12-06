@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.bellintegrator.practice.dao.document.DocumentTypeDao;
 import ru.bellintegrator.practice.model.DocumentType;
 import ru.bellintegrator.practice.model.mapper.MapperFacade;
+import ru.bellintegrator.practice.utils.BadDataException;
 import ru.bellintegrator.practice.view.document.DocumentTypeView;
 
 import java.util.List;
@@ -31,5 +32,18 @@ public class DocumentTypeServiceImpl implements DocumentTypeService {
     public List<DocumentTypeView> getDocs() {
         List<DocumentType> documentTypes = documentTypeDao.getDocs();
         return mapperFacade.mapAsList(documentTypes, DocumentTypeView.class);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public DocumentTypeView getDocumentTypeById(Long id) {
+        DocumentType documentType = documentTypeDao.getDocumentTypeById(id);
+        if(documentType == null) {
+            throw new BadDataException();
+        }
+        return mapperFacade.map(documentType, DocumentTypeView.class);
     }
 }

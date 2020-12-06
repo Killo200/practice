@@ -1,7 +1,10 @@
 package ru.bellintegrator.practice.service.office;
 
-import ru.bellintegrator.practice.view.office.*;
-import ru.bellintegrator.practice.view.organization.*;
+import ru.bellintegrator.practice.view.office.OfficeFilterViewIn;
+import ru.bellintegrator.practice.view.office.OfficeFilterViewOut;
+import ru.bellintegrator.practice.view.office.OfficeView;
+import ru.bellintegrator.practice.view.office.OfficeViewSave;
+import ru.bellintegrator.practice.view.office.OfficeViewUpdate;
 
 import java.util.List;
 

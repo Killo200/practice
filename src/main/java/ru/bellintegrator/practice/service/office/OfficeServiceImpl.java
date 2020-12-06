@@ -5,12 +5,13 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.bellintegrator.practice.dao.office.OfficeDao;
 import ru.bellintegrator.practice.dao.organization.OrganizationDao;
 import ru.bellintegrator.practice.model.Office;
-import ru.bellintegrator.practice.model.Organization;
 import ru.bellintegrator.practice.model.mapper.MapperFacade;
 import ru.bellintegrator.practice.utils.BadDataException;
-import ru.bellintegrator.practice.view.office.*;
-import ru.bellintegrator.practice.view.organization.OrganizationFilterViewOut;
-import ru.bellintegrator.practice.view.organization.OrganizationView;
+import ru.bellintegrator.practice.view.office.OfficeFilterViewIn;
+import ru.bellintegrator.practice.view.office.OfficeFilterViewOut;
+import ru.bellintegrator.practice.view.office.OfficeView;
+import ru.bellintegrator.practice.view.office.OfficeViewSave;
+import ru.bellintegrator.practice.view.office.OfficeViewUpdate;
 
 import java.util.List;
 

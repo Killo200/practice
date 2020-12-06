@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
 /**
  * Тип документа
  */
 @Entity
+@Table(name = "Doc_type")
 public class DocumentType {
 
     /**
@@ -30,7 +32,7 @@ public class DocumentType {
     /**
      * Уникальный код документа
      */
-    @Column(name = "code", nullable = false)
+    @Column(name = "code", nullable = false, unique = true)
     private Integer code;
 
     /**

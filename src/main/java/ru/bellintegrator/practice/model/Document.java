@@ -22,7 +22,14 @@ public class Document {
      */
     @Id
     @Column(name = "person_id")
-    private Long person_id;
+    private Long id;
+
+    /**
+     * Документ привязан к человеку
+     */
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @MapsId
+    private Person person;
 
     /**
      * Служебное поле hibernate
@@ -55,19 +62,20 @@ public class Document {
     @JoinColumn(name = "doc_type_code_id")
     private DocumentType documentType;
 
-    /**
-     * Документ привязан к человеку
-     */
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    private Person person;
-
-    public Long getPerson_id() {
-        return person_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setPerson_id(Long person_id) {
-        this.person_id = person_id;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public Integer getVersion() {
@@ -100,13 +108,5 @@ public class Document {
 
     public void setDocumentType(DocumentType documentType) {
         this.documentType = documentType;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 }

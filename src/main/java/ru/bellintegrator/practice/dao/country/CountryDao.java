@@ -1,7 +1,6 @@
 package ru.bellintegrator.practice.dao.country;
 
 import ru.bellintegrator.practice.model.Country;
-import ru.bellintegrator.practice.model.Office;
 
 import java.util.List;
 
@@ -14,4 +13,9 @@ public interface CountryDao {
      * Получение списка кодов стран (гражданства)
      */
     List<Country> getCountries();
+
+    /**
+     * Получение страны по коду
+     */
+    Country getCountryByCode(Integer code);
 }
