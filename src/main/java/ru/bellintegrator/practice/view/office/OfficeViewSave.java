@@ -40,15 +40,4 @@ public class OfficeViewSave {
      */
     @ApiModelProperty(value = "Активность офиса", example = "true")
     public boolean isActive;
-
-    @Override
-    public String toString() {
-        return "OfficeViewSave{" +
-                "organizationId=" + organizationId +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", isActive=" + isActive +
-                '}';
-    }
 }

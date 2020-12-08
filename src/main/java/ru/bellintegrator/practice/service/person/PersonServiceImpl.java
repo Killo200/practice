@@ -8,9 +8,7 @@ import ru.bellintegrator.practice.dao.document.DocumentTypeDao;
 import ru.bellintegrator.practice.dao.office.OfficeDao;
 import ru.bellintegrator.practice.dao.person.PersonDao;
 import ru.bellintegrator.practice.dao.persondoc.PersonDocDao;
-import ru.bellintegrator.practice.model.Document;
-import ru.bellintegrator.practice.model.DocumentType;
-import ru.bellintegrator.practice.model.Person;
+import ru.bellintegrator.practice.model.*;
 import ru.bellintegrator.practice.model.mapper.MapperFacade;
 import ru.bellintegrator.practice.utils.BadDataException;
 import ru.bellintegrator.practice.view.person.PersonFilterViewIn;
@@ -87,36 +85,40 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @Transactional
     public void updatePerson(PersonViewUpdate personViewUpdate) {
+
         Person person = personDao.getPersonById(personViewUpdate.id);
+
         if (personViewUpdate.officeId != null) {
             person.setOffice(officeDao.getOfficeById(personViewUpdate.officeId));
         }
-        mapperFacade.map(personViewUpdate, person);
 
-        if (personViewUpdate.docName != null) {
+        if (personViewUpdate.documentName != null) {
             if (person.getDocument() != null) {
                 person.getDocument().setDocumentNumber(personViewUpdate.documentNumber);
-                person.getDocument().setDocumentDate(personViewUpdate.docDate);
+                person.getDocument().setDocumentDate(personViewUpdate.documentDate);
             } else {
                 Document document = new Document();
                 DocumentType documentType;
                 try {
-                    documentType= documentTypeDao.getDocumentTypeByName(personViewUpdate.docName);
+                    documentType = documentTypeDao.getDocumentTypeByName(personViewUpdate.documentName);
                     if (documentType != null) {
                         document.setDocumentType(documentType);
                         document.setDocumentNumber(personViewUpdate.documentNumber);
-                        document.setDocumentDate(personViewUpdate.docDate);
+                        document.setDocumentDate(personViewUpdate.documentDate);
                         document.setPerson(person);
                         person.setDocument(document);
                     }
                 } catch (Exception e) {
-                    throw new RuntimeException("Такое гражданство не существует");
+                    throw new RuntimeException("Неверное название документа");
                 }
             }
         }
+
         if (personViewUpdate.citizenshipCode != null) {
             person.setCountry(countryDao.getCountryByCode(personViewUpdate.citizenshipCode));
         }
+
+        mapperFacade.map(personViewUpdate, person);
         personDao.updatePerson(person);
     }
 

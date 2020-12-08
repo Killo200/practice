@@ -14,6 +14,4 @@ public class CountryView {
      * Название страны
      */
     public String name;
-
-
 }

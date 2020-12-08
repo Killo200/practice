@@ -38,14 +38,4 @@ public class OfficeFilterViewIn {
      */
     @ApiModelProperty(value = "Активность офиса", example = "true")
     public boolean isActive;
-
-    @Override
-    public String toString() {
-        return "OfficeFilterViewIn{" +
-                "organizationId=" + organizationId +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", isActive=" + isActive +
-                '}';
-    }
 }

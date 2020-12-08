@@ -24,14 +24,4 @@ public class OfficeView {
      * Телефон офиса
      */
     public String phone;
-
-    @Override
-    public String toString() {
-        return "OfficeView{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
 }

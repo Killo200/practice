@@ -2,8 +2,7 @@ package ru.bellintegrator.practice.view.person;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 /**
  * Вид входящих данных для обновления сведений о человеке
@@ -27,7 +26,7 @@ public class PersonViewUpdate {
      * Имя
      */
     @Size(max = 20)
-    @NotNull
+    @NotEmpty
     @ApiModelProperty(value = "Имя", example = "Святогор")
     public String firstName;
 
@@ -49,7 +48,7 @@ public class PersonViewUpdate {
      * Должность
      */
     @Size(max = 50)
-    @NotNull
+    @NotEmpty
     @ApiModelProperty(value = "Должность", example = "Контролер")
     public String position;
 
@@ -65,7 +64,7 @@ public class PersonViewUpdate {
      */
     @Size(max = 250)
     @ApiModelProperty(value = "Название документа", example = "Паспорт гражданина Российской Федерации")
-    public String docName;
+    public String documentName;
 
     /**
      * номер документа
@@ -79,12 +78,12 @@ public class PersonViewUpdate {
      */
     @Size(max = 10)
     @ApiModelProperty(value = "Дата выдачи документа", example = "2020-12-06")
-    public String docDate;
+    public String documentDate;
 
     /**
      * Код страны
      */
-    @ApiModelProperty(value = "Код гражданства", example = "643")
+    @ApiModelProperty(value = "Код гражданства", example = "112")
     public Integer citizenshipCode;
 
     /**

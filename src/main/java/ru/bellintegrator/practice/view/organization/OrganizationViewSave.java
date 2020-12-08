@@ -62,17 +62,4 @@ public class OrganizationViewSave {
      */
     @ApiModelProperty(value = "Активность организации", example = "true")
     public boolean isActive;
-
-    @Override
-    public String toString() {
-        return "OrganizationView{" +
-                ", name='" + name + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", inn='" + inn + '\'' +
-                ", kpp='" + kpp + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", isActive=" + isActive +
-                '}';
-    }
 }

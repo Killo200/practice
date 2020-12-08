@@ -69,18 +69,4 @@ public class OrganizationViewUpdate {
      */
     @ApiModelProperty(value = "Активность организации", example = "true")
     public boolean isActive;
-
-    @Override
-    public String toString() {
-        return "OrganizationView{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", inn='" + inn + '\'' +
-                ", kpp='" + kpp + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", isActive=" + isActive +
-                '}';
-    }
 }

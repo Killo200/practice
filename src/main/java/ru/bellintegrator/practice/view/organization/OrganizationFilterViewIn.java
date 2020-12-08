@@ -32,13 +32,4 @@ public class OrganizationFilterViewIn {
      */
     @ApiModelProperty(value = "Активность организации", example = "true")
     public boolean isActive;
-
-    @Override
-    public String toString() {
-        return "OrganizationFilterView{" +
-                ", name='" + name + '\'' +
-                ", inn='" + inn + '\'' +
-                ", isActive=" + isActive +
-                '}';
-    }
 }
