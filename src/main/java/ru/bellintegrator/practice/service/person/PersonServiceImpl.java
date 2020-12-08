@@ -92,7 +92,7 @@ public class PersonServiceImpl implements PersonService {
             person.setOffice(officeDao.getOfficeById(personViewUpdate.officeId));
         }
 
-        if (personViewUpdate.documentName != null) {
+        if (personViewUpdate.documentName != null && !personViewUpdate.documentName.trim().equals("")) {
             if (person.getDocument() != null) {
                 person.getDocument().setDocumentNumber(personViewUpdate.documentNumber);
                 person.getDocument().setDocumentDate(personViewUpdate.documentDate);
@@ -138,7 +138,7 @@ public class PersonServiceImpl implements PersonService {
             document.setDocumentNumber(personViewSave.documentNumber);
             document.setDocumentDate(personViewSave.docDate);
             person.setDocument(document);
-        } else if (personViewSave.docName != null) {
+        } else if (personViewSave.docName != null && !personViewSave.docName.trim().equals("")) {
             DocumentType documentType = documentTypeDao.getDocumentTypeByName(personViewSave.docName);
             document.setPerson(person);
             document.setDocumentType(documentType);
