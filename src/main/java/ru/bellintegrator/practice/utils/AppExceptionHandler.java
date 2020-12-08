@@ -1,5 +1,8 @@
 package ru.bellintegrator.practice.utils;
 
+
+
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -17,11 +20,22 @@ import java.util.List;
 @RestControllerAdvice("ru.bellintegrator.practice.controller")
 public class AppExceptionHandler {
 
+    private static final Logger log = Logger.getLogger(AppExceptionHandler.class);
+
+    private int getRandomInt(){
+        return (int) (Math.random() * 10000);
+    }
+
     @ExceptionHandler(Exception.class)
     @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorView otherException (Exception e) {
         ErrorView errorView = new ErrorView();
-        errorView.error = e.getMessage();
+        String message = e.getMessage();
+        int errorNumber = getRandomInt();
+        log.error("Ошибка " + errorNumber + ": " + message);
+
+
+        errorView.error = "Ошибка " + errorNumber + ": Внутренняя ошибка сервера";
         return errorView;
     }
 
@@ -45,7 +59,9 @@ public class AppExceptionHandler {
         List<String> errors = new ArrayList<>();
         for (ConstraintViolation<?> violation : e.getConstraintViolations()) {
             String message = violation.getMessage();
-            errors.add(message);
+            int errorNumber = getRandomInt();
+            log.error("Ошибка " + errorNumber + ": " + message);
+            errors.add("Ошибка " + errorNumber + ": Ошибка запроса");
         }
 
         ErrorView errorView = new ErrorView();
