@@ -4,9 +4,9 @@
 
 Приложение предназначено для предоставления данных в виде JSON, сформированных из запроса к информации хранеящейся в Базе Данных
 
-Ссылка для скачивания: <a href="https://github.com/Killo200/practice </a>
+Ссылка для скачивания: https://github.com/Killo200/practice
 
-<h3><a id="start"></a>Запуск программы</h3>
+<h3>Запуск программы</h3>
   В консоли перейти в папку с проектом, выполнить:
   
   mvn spring-boot:run
@@ -22,7 +22,7 @@
 
 ![swagger-ui](https://github.com/killo200/practice/blob/master/scrn/sawgger-ui.png?raw=true)
 
-<h5>Пример запросов к данным по организации:</h5>
+<h3>Пример запросов к данным по организации:</h3>
 
 Открыть вкладку organization-controller:
 
