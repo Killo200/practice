@@ -13,7 +13,7 @@ public class OrganizationViewSave {
     /**
      * Название организации
      */
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @NotEmpty(message = "name cannot be null")
     @ApiModelProperty(value = "Название организации", example = "Газпром")
     public String name;

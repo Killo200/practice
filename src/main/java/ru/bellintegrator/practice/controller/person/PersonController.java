@@ -5,11 +5,18 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.practice.service.person.PersonService;
-import ru.bellintegrator.practice.view.organization.OrganizationViewSave;
-import ru.bellintegrator.practice.view.organization.OrganizationViewUpdate;
-import ru.bellintegrator.practice.view.person.*;
+import ru.bellintegrator.practice.view.person.PersonFilterViewIn;
+import ru.bellintegrator.practice.view.person.PersonFilterViewOut;
+import ru.bellintegrator.practice.view.person.PersonView;
+import ru.bellintegrator.practice.view.person.PersonViewSave;
+import ru.bellintegrator.practice.view.person.PersonViewUpdate;
 
 import javax.validation.Valid;
 

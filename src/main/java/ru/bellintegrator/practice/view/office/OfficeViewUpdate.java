@@ -2,6 +2,7 @@ package ru.bellintegrator.practice.view.office;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -18,7 +19,7 @@ public class OfficeViewUpdate {
      * Название офиса
      * */
     @Size(max = 50)
-    @NotNull
+    @NotEmpty
     @ApiModelProperty(value = "Название офиса", example = "Газпром МСК")
     public String name;
 
@@ -26,7 +27,7 @@ public class OfficeViewUpdate {
      * Адрес офиса
      */
     @Size(max = 250)
-    @NotNull
+    @NotEmpty
     @ApiModelProperty(value = "Адрес организации", example = "ул. Наметкина, 16")
     public String address;
 

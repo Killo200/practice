@@ -5,9 +5,18 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.bellintegrator.practice.service.office.OfficeService;
-import ru.bellintegrator.practice.view.office.*;
+import ru.bellintegrator.practice.view.office.OfficeFilterViewIn;
+import ru.bellintegrator.practice.view.office.OfficeFilterViewOut;
+import ru.bellintegrator.practice.view.office.OfficeView;
+import ru.bellintegrator.practice.view.office.OfficeViewSave;
+import ru.bellintegrator.practice.view.office.OfficeViewUpdate;
 
 import javax.validation.Valid;
 

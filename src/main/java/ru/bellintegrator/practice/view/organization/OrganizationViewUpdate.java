@@ -3,6 +3,7 @@ package ru.bellintegrator.practice.view.organization;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -13,7 +14,7 @@ public class OrganizationViewUpdate {
     /**
      * Идентификатор
      */
-
+    @NotNull
     @ApiModelProperty(value = "Уникальный идентификатор", example = "1")
     public Long id;
 
