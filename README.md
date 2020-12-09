@@ -22,5 +22,32 @@
 
 ![swagger-ui](https://github.com/killo200/practice/blob/master/scrn/sawgger-ui.png?raw=true)
 
-<h5>Пример запроса:</h5>
+<h5>Пример запросов к данным по организации:</h5>
 
+Открыть вкладку organization-controller:
+
+![organizationView](https://github.com/killo200/practice/blob/master/scrn/organizationView.png?raw=true)
+
+1. Выбрать вкладку получить организацию по ID и указать номер ID:
+
+результат ответа если организация с данным ID есть в БД
+
+![organizationViewG](https://github.com/killo200/practice/blob/master/scrn/answer200byid.png?raw=true)
+
+результат ответа если организация с данным ID нет в БД
+
+![organizationViewBad](https://github.com/killo200/practice/blob/master/scrn/answer404byid.png?raw=true)
+
+2. Выбрать вкладку получить список организаций, подходящих по фильтру:
+
+![Filter](https://github.com/killo200/practice/blob/master/scrn/Filter.png?raw=true)
+
+результат ответа если в БД есть организации подходящие по фильтру
+
+![Filter](https://github.com/killo200/practice/blob/master/scrn/Filteranswer200.png?raw=true)
+
+результат ответа если запрос к БД не верный
+
+![Filter](https://github.com/killo200/practice/blob/master/scrn/Filteranswer500.png?raw=true)
+
+Овет содержит код ошибки, который логируется для дальнейшего выяснения причин на стороне сервера

@@ -34,7 +34,7 @@ public class AppExceptionHandler {
         log.error("Ошибка " + errorNumber + ": " + message);
 
 
-        errorView.error = "Ошибка " + errorNumber + ": Внутренняя ошибка сервера";
+        errorView.error = "Ошибка " + errorNumber + ": Запрос не обработан, проверьте корректность введенных данных";
         return errorView;
     }
 
