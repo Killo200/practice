@@ -1,8 +1,7 @@
 package ru.bellintegrator.practice.utils;
 
-
-
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -20,7 +19,7 @@ import java.util.List;
 @RestControllerAdvice("ru.bellintegrator.practice.controller")
 public class AppExceptionHandler {
 
-    private static final Logger log = Logger.getLogger(AppExceptionHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(AppExceptionHandler.class);
 
     private int getRandomInt(){
         return (int) (Math.random() * 10000);
@@ -61,7 +60,7 @@ public class AppExceptionHandler {
             String message = violation.getMessage();
             int errorNumber = getRandomInt();
             log.error("Ошибка " + errorNumber + ": " + message);
-            errors.add("Ошибка " + errorNumber + ": Ошибка запроса");
+            errors.add("Ошибка " + errorNumber + ": Ошибка запроса, нарушение ограничения");
         }
 
         ErrorView errorView = new ErrorView();
