@@ -4,7 +4,6 @@ package ru.bellintegrator.practice.dao.office;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.bellintegrator.practice.model.Office;
-import ru.bellintegrator.practice.model.Organization;
 import ru.bellintegrator.practice.view.office.OfficeFilterViewIn;
 
 import javax.persistence.EntityManager;

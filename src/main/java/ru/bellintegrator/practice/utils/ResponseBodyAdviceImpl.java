@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *  Настройка ответа после выполнения метода контроллера @ResponseBody
+ *  Настройка ответа до выполнения метода контроллера @ResponseBody
  * */
 @RestControllerAdvice("ru.bellintegrator.practice.controller")
 public class ResponseBodyAdviceImpl implements ResponseBodyAdvice<Object> {
